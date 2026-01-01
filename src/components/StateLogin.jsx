@@ -17,7 +17,7 @@ export default function Login() {
     event.preventDefault();
     // submition-based validation
     const emailIsValid = enteredValues.email.includes("@");
-    const passwordIsValid = enteredValues.password.trim().length > 6; // example
+    const passwordIsValid = enteredValues.password.trim().length >= 6; // example
     // 2. Stop if bad
     if (!emailIsValid || !passwordIsValid) {
       // Optional: Force the 'didEdit' state to true so the error red text shows up on the screen now
