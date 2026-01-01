@@ -1,12 +1,16 @@
 export default function Login() {
+  function handleSubmit(event){
+    event.preventDefault()
+    console.log("submit")
+  }
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <h2>Login</h2>
 
       <div className="control-row">
         <div className="control no-margin">
           <label htmlFor="email">Email</label>
-          <input id="email" type="email" name="email" />
+          <input id="email" type="email" name="email"/>
         </div>
 
         <div className="control no-margin">
