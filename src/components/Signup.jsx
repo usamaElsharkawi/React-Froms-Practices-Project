@@ -3,28 +3,11 @@ import { useState } from "react";
 export default function Signup() {
   const [passwordsAreNotMatch, setPasswordAreNotMatch] = useState(false);
 
-  function handleSubmit(event) {
-    event.preventDefault();
-    //gets the inputs data
-    const fd = new FormData(event.target);
-    const data = Object.fromEntries(fd.entries());
-    const acquisitionChannel = fd.getAll("acquisition");
-    data.acquisition = acquisitionChannel;
-    
-    //confirm-password validation
-    if (data.password !== data["confirm-password"]) {
-      setPasswordAreNotMatch(true);
-      return;
-    }else{
-      setPasswordAreNotMatch(false)
-    }
-    
-    console.log(data);
-    console.log('sending http request...')
-    event.target.reset();
+  function signupAction(formData) {
+    console.log(formData)
   }
   return (
-    <form onSubmit={handleSubmit}>
+    <form action={signupAction}>
       <h2>Welcome on board!</h2>
       <p>We just need a little bit of data from you to get you started 🚀</p>
 
