@@ -33,6 +33,11 @@ export default function Login() {
       email: "",
       password: "",
     });
+
+    setDidEdit({
+      email: false, // Reset this so the error doesn't flash on the empty field
+      password: false,
+    });
   }
   function handleChangeValue(identifier, value) {
     setEnteredValues((prevValues) => ({
