@@ -25,8 +25,22 @@ Throughout this project, we explored several key architectures for handling form
     - Standard HTML validation props (`required`, `minLength`, `type="email"`).
 
 4.  **Custom Hooks**
+
     - Refactoring repetitive logic into a reusable `useInput` hook.
     - Encapsulating change handlers, blur handlers, and validation logic.
+
+5.  **React 19 Form Actions & `useActionState`**
+    - **Native Logic Hijacking**: Understanding how React 19 intercepts the `action` prop on `<form>` to handle functions instead of just URLs.
+    - **`useActionState` Hook**: Managing form results and pending states without manual `useState` boilerplate.
+    - **Atomic Updates**: Learning how React handles transitions to ensure UI consistency during asynchronous submissions.
+    - **Action Outsourcing**: Decoupling business logic from UI components by moving actions into separate files.
+    - **The `key` Reset Strategy**: Using the React `key` prop to instantly remount and reset forms upon successful submission.
+
+## 🧠 Under the Hood & Advanced JS
+
+- **Function Hoisting**: Understanding how the JS Engine's Creation Phase vs. Execution Phase affects where we define our actions.
+- **The Event Loop & Transitions**: How React manages async actions in the Microtask Queue.
+- **FormData Internals**: Deep dive into the `FormData` Web API and its methods (`get`, `getAll`, `entries`).
 
 > ## 🤖 AI-Assisted Learning
 >
