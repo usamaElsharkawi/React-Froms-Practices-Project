@@ -6,61 +6,61 @@ import {
   isNotEmpty,
 } from "../util/validation";
 
-export default function Signup() {
-  function signupAction(prevFormState, formData) {
-    const acquisitions = formData.getAll("acquisition");
-    const data = Object.fromEntries(formData.entries());
-    data.acquisition = acquisitions;
-    const {
-      email,
-      password,
-      "confirm-password": confirmPassword,
-      "first-name": firstName,
-      "last-name": lastName,
-      acquisition,
-      role,
-      terms,
-    } = data;
-    //validation logic
-    const errors = [];
+function signupAction(prevFormState, formData) {
+  const acquisitions = formData.getAll("acquisition");
+  const data = Object.fromEntries(formData.entries());
+  data.acquisition = acquisitions;
+  const {
+    email,
+    password,
+    "confirm-password": confirmPassword,
+    "first-name": firstName,
+    "last-name": lastName,
+    acquisition,
+    role,
+    terms,
+  } = data;
+  //validation logic
+  const errors = [];
 
-    // Email validation
-    if (!isNotEmpty(email) || !isEmail(email)) {
-      errors.push("Please enter a valid email address.");
-    }
-
-    // First name validation
-    if (!isNotEmpty(firstName)) {
-      errors.push("First name is required.");
-    }
-
-    // Last name validation
-    if (!isNotEmpty(lastName)) {
-      errors.push("Last name is required.");
-    }
-
-    // Password validation
-    if (!isNotEmpty(password) || !hasMinLength(password, 6)) {
-      errors.push("Password must be at least 6 characters long.");
-    }
-
-    // Confirm password validation
-    if (!isEqualsToOtherValue(password, confirmPassword)) {
-      errors.push("Passwords do not match.");
-    }
-
-    // Terms validation (checkbox may be undefined if unchecked)
-    if (!terms) {
-      errors.push("You must agree to the terms and conditions.");
-    }
-
-    if (errors.length > 0) {
-      return { errors };
-    }
-    if (errors.length === 0) {
-      return { errors: null };
-    }
+  // Email validation
+  if (!isNotEmpty(email) || !isEmail(email)) {
+    errors.push("Please enter a valid email address.");
   }
+
+  // First name validation
+  if (!isNotEmpty(firstName)) {
+    errors.push("First name is required.");
+  }
+
+  // Last name validation
+  if (!isNotEmpty(lastName)) {
+    errors.push("Last name is required.");
+  }
+
+  // Password validation
+  if (!isNotEmpty(password) || !hasMinLength(password, 6)) {
+    errors.push("Password must be at least 6 characters long.");
+  }
+
+  // Confirm password validation
+  if (!isEqualsToOtherValue(password, confirmPassword)) {
+    errors.push("Passwords do not match.");
+  }
+
+  // Terms validation (checkbox may be undefined if unchecked)
+  if (!terms) {
+    errors.push("You must agree to the terms and conditions.");
+  }
+
+  if (errors.length > 0) {
+    return { errors };
+  }
+  if (errors.length === 0) {
+    return { errors: null };
+  }
+}
+export default function Signup() {
   const [formState, formAction] = useActionState(signupAction, {
     errors: null,
   });
